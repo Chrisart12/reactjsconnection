@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Qcm from './components/Qcm';
 import Genre from './components/Genre';
 import Login from './components/auth/Login';
+import { QcmByGenre } from './components/QcmByGenre';
 
 
 
@@ -21,7 +22,7 @@ export class App extends Component {
                     <Switch>
                             <Route path="/" exact component={ Home }/>
                             <Route path="/qcm" exact component={ Qcm }/>
-                            <Route path="/genre/:id" exact component={ Genre }/>
+                            <Route path="/genre/:id" exact component={ QcmByGenre }/>
                             <Route path="/login" exact component={ Login }/>
                     </Switch>
                 </Router>

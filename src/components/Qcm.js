@@ -19,15 +19,7 @@ class Qcm extends Component {
     
 
     componentDidMount() {
-        // axios.get("http://localhost:3000/data/mydata.json") 
-        // axios.get("http://localhost:8000/api/quiz")
-        // .then(response => {
-        //     console.log("response", response)
-        //     this.setState({
-        //         qcm: response.data.qcm,
-        //         questions: response.data.qcm
-        //     })
-        // })
+        
     if(localStorage.getItem('userdata')) {
 
         axios({

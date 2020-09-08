@@ -30,7 +30,7 @@ export class Nav extends Component {
     render() {
         const { isConnected } = this.props.userData;
         console.log("isConnected", isConnected)
-    
+        console.log(localStorage.getItem('userdata'))
 
        let connectBtn = localStorage.getItem('userdata') ? 
         <li className="nav-item deconnected">
@@ -50,14 +50,20 @@ export class Nav extends Component {
             </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <NavLink className="nav-link" to='/'>HOME</NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to='/qcm' >QCM</NavLink>
-                        </li>
+                        { localStorage.getItem('userdata') && 
+                            <li className="nav-item active">
+                                <NavLink className="nav-link" to='/'>HOME</NavLink>
+                            </li>
+                        }
+                        { localStorage.getItem('userdata') &&
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to='/qcm' >QCM</NavLink>
+                            </li>
+                        }
+                        { localStorage.getItem('userdata') &&
+                            <Genre />
+                        }
                         
-                        <Genre />
                         { connectBtn }
                     </ul>
                 </div>

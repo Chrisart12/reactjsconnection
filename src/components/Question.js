@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { addQuestionId } from "../redux";
 // import Proptypes from 'prop-types';
 
 class Question extends Component {
@@ -18,10 +20,23 @@ class Question extends Component {
             choice: e.target.value
         })
     }
+
+    verifyQuestionAnswered = (question_id) => {
+        console.log(question_id)
+        const {questionAnswers} = this.props;
+        console.log("questionAnswers", questionAnswers)
+        const isAnswered = questionAnswers.filter(elt => elt == question_id)
+        console.log("this.props.questionAnswers", this.props.questionAnswers)
+        console.log("isAnswered", isAnswered)
+    }
     
 
     handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
+        this.verifyQuestionAnswered(this.props.question.id)
+        // console.log("idquestion", sessionStorage.getItem("question"))
+
         if(this.props.question.response === this.state.choice){
             this.setState({
                 status: "vrai"
@@ -31,12 +46,15 @@ class Question extends Component {
                 status: "faux"
             })
         }
+
+        this.props.addQuestionId(this.props.question.id)
     }
 
     render() {
         const {choice1, choice2, choice, status} = this.state
-        const {question} = this.props
+        const {question, questionAnswers} = this.props
 
+        console.log("questionAnswers", questionAnswers)
         // let disabled = choice ? null : disabled
         let response;
         if(status === "vrai" ) {
@@ -49,7 +67,7 @@ class Question extends Component {
                             La réponse est {question.response}
                         </div>
         }
-       
+    
 
         let btnStatus;
         if(choice) {
@@ -97,4 +115,22 @@ class Question extends Component {
 //     question: Proptypes.object,
 // }
 
-export default Question
+
+const mapStateToProps = (state) => {
+    return {
+        // userData: state.user,
+        // loading: state.user.loading,
+        // errorData: state.user.error
+        questionAnswers: state.questions
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addQuestionId: (question_id) => dispatch(addQuestionId(question_id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);
+
+

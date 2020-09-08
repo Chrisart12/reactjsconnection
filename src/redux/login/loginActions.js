@@ -1,6 +1,9 @@
 import axios from 'axios';
 import config from '../../configuration/config';
-import history from '../../history'
+import history from '../../history';
+import React from 'react';
+import  { Redirect } from 'react-router-dom';
+
 import {FETCH_LOGIN_REQUEST, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAILURE, DECONNECT_USER } from './loginTypes'
 
 
@@ -83,6 +86,7 @@ export const fetchLogin = (email, password) => {
                 }).then(() => {
                     history.push("/");
                     window.location.reload(false);
+                    // return <Redirect to="/" />
                 })
             
         }).catch( error => {

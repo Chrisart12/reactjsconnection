@@ -15,16 +15,7 @@ export class Genre extends Component {
     }
 
     componentDidMount() {
-        
-        // axios.get("http://localhost:3000/data/mydata.json")
-        // .then(response => {
-        //     console.log(response.data.genres)
-        //     this.setState({
-        //         genres: response.data.genres,
-        //     })
-        // })
-
-        
+    
         axios({
             method:'get',
             url: config.API_URL + 'api/genre',
