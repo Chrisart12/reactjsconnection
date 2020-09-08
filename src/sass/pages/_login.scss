@@ -1,0 +1,33 @@
+.login-page-container {
+    text-align: center;
+    margin-top:300px;
+}
+
+.input-form {
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #424242;
+}
+
+.btn-form {
+    width: 400px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #424242;
+    background: #212121;
+    color: white;
+
+    &:hover {
+        background: beige;
+        color: #212121;
+    }
+}
+
+.login-btn_disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+    /*Button disabled - CSS color class*/
+    color: #c0c0c0;
+    background-color: #ffffff;
+}
